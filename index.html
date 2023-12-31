@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link's Aeroporto</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    /* font-family: 'Bebas Neue', sans-serif; */
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+    /* font-family: 'Ubuntu', sans-serif; */
+
+    * {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Bebas Neue', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
+    }
+
+    body {
+        width: 100vw;
+        height: auto;
+        background-color: #0a0a0b;
+        overflow-x: hidden;
+    }
+</style>
+
+<body>
+    <style>
+        .main {
+            background-color: #0a0a0b;
+            /* min-height: 100vh; */
+            width: 100vw;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .box-header {
+            background-color: red;
+            height: 50px;
+            width: 90%;
+            max-width: 750px;
+            padding-left: 20px;
+        }
+
+
+        .box-link {
+            /* background-color: red; */
+            width: 90%;
+            max-width: 750px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 35px;
+        }
+
+        .link {
+            /* background-color: red; */
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #404042;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            color: rgb(195, 194, 194);
+            transition: 0.5s;
+        }
+
+        .link:hover {
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            transition: 0.5s;
+            background: rgb(0, 0, 0);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 68%, rgba(54, 53, 53, 1) 100%);
+        }
+    </style>
+    <div class="main">
+        <div class="box-header">
+            <form action="">
+                <input type="text">
+                <button type="submit">&#128269;</button>
+            </form>
+        </div>
+
+
+
+
+        <div class="box-link">
+            <div class="link">
+                <div class="text">
+                    <p style="font-weight: bold;">LinkedIn</p>
+                    <p style="margin-top: 14px; font-size: 12px;">Ótimo local para você acompanhar o meu dia a dia.</p>
+                </div>
+            </div>
+
+
+            <div class="link">
+                <div class="text">
+                    <p style="font-weight: bold;">GitHub</p>
+                    <p style="margin-top: 14px; font-size: 12px;">Ótimo local para você acompanhar o meu dia a dia.</p>
+                </div>
+            </div>
+
+
+            <div class="link">
+                <div class="text">
+                    <p style="font-weight: bold;">Instagram</p>
+                    <p style="margin-top: 14px; font-size: 12px;">Ótimo local para você acompanhar o meu dia a dia.</p>
+                </div>
+            </div>
+
+            <div class="link">
+                <div class="text">
+                    <p style="font-weight: bold;">WhastApp</p>
+                    <p style="margin-top: 14px; font-size: 12px;">Ótimo local para você acompanhar o meu dia a dia.</p>
+                </div>
+            </div>
+
+            <div class="link">
+                <div class="text">
+                    <p style="font-weight: bold;"> &#128126; Meu portifolio </p>
+                    <p style="margin-top: 14px; font-size: 12px;">Aqui você vai encontrar meus melhores projetos WEB</p>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+        <br><br>
+
+    </div>
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAF1CeIxr_3AxD1dIqGmaNsoxJcXXeiirc",
+      authDomain: "links-aeroporto.firebaseapp.com",
+      projectId: "links-aeroporto",
+      storageBucket: "links-aeroporto.appspot.com",
+      messagingSenderId: "361240212980",
+      appId: "1:361240212980:web:4069c81138eb49661335a1",
+      measurementId: "G-1696MQW36J"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+</html>
