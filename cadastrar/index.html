@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link's Aeroporto</title>
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    /* font-family: 'Bebas Neue', sans-serif; */
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap');
+    /* font-family: 'Ubuntu', sans-serif; */
+
+    * {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Bebas Neue', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
+        color: rgb(195, 194, 194);
+
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input {
+        background-color: #141414;
+        height: 28px;
+        border: 0px none;
+        outline: 0px none;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 15px;
+        margin-top: 7px;
+    }
+
+    body {
+        width: 100vw;
+        height: auto;
+        background-color: #0a0a0b;
+        overflow-x: hidden;
+    }
+
+    .main {
+        background-color: #0a0a0b;
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
+
+
+<body>
+    <div class="main">
+
+        <div class="box-cadastrar-link">
+            <style>
+                .box-cadastrar-link {
+                    /* background-color: red; */
+                    width: 90%;
+                    max-width: 750px;
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 25px;
+                    /* border-left: 1px solid rgb(93, 91, 91); */
+                    border-radius: 4px;
+                    position: relative;
+                }
+
+                .box-cadastrar-link form {
+                    /* background-color: aquamarine; */
+                    width: 90%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    /* flex-direction: column; */
+                    margin-top: 20px;
+                    position: relative;
+                }
+
+                .box-input {
+                    display: flex;
+                    flex-direction: column;
+                    /* background-color: aqua; */
+                    margin: 5px;
+                    margin-top: 15px;
+                }
+
+                .box-input button {
+                    height: 35px;
+                    background-color: #2EA043;
+                    font-weight: bold;
+                    border: 0px none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    color: rgb(195, 194, 194);
+                    margin-bottom: 20px;
+
+                }
+            </style>
+
+            <form action="" method="POST" id="formulario-link">
+                <p style="position: absolute; left: 0px; top: -30px; font-size: 13px;">* Campos de preechimento
+                    obrigatorio.</p>
+                <div class="box-title"
+                    style="position: absolute; top: -100px; right: 0%; display: flex; justify-content: center; align-items: center;">
+                    <img src="./img/cmd.png" alt="" style="height: 50px; margin-right: 5px;">
+                    <h2 style="color: rgb(151, 150, 150);;">Cadastrar Link</h2>
+                </div>
+                <div class="box-input" style="width: 20%;">
+                    <label for="">Aeroporto:</label>
+                    <input type="text" placeholder="COD. ex.: PMW" value="PMW" name="codAeroporto"
+                        style="display: none;">
+                    <input type="text" placeholder="COD. ex.: PMW" value="PMW" disabled>
+                </div>
+                <div class="box-input" style="width: 76%;">
+                    <label for="">Titulo:</label>
+                    <input type="text" placeholder="Insira o titulo do link" name="tituloLink" id="input1">
+                </div>
+
+                <div class="box-input" style="width: 100%;">
+                    <label for="">Decrição:</label>
+                    <input type="text" placeholder="Descreva em poucas linhas o link" name="descricaoLink" id="input2">
+                </div>
+
+
+                <div class="box-input" style="width: 60%;">
+                    <label for="">link:</label>
+                    <input type="text" placeholder="insira o link de redirecionamento" name="link" id="input3">
+                </div>
+
+
+                <div class="box-input" style="width: 36%;">
+                    <label for="">Subir um icone:</label>
+                    <input type="file" placeholder="">
+                </div>
+
+                <div class="box-input"
+                    style="width: 100%; flex-direction: row; justify-content: start; align-items: center;">
+
+                    <input type="checkbox" style="margin-right: 6px;" required>
+                    <label for=""> Confirme, o link já foi testado *</label>
+
+                </div>
+
+                <div class="box-input" style="width: 100%;">
+                    <button>CADASTRAR</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+
+    let formulario = document.getElementById('formulario-link');
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault();
+        cadastrarLink();
+    })
+
+
+
+
+    function cadastrarLink() {
+        let formdata = new FormData(formulario);
+        let ajax = new XMLHttpRequest();
+
+        let input1 = document.getElementById('input1');
+        let input2 = document.getElementById('input2');
+        let input3 = document.getElementById('input3');
+
+
+        ajax.open('POST', "../api/create-link.php");
+        ajax.onreadystatechange = () => {
+            if (ajax.status == 200 && ajax.readyState == 4) {
+                let resposta = JSON.parse(ajax.response);
+                document.getElementById('input1').value ="";
+                document.getElementById('input2').value="";
+                document.getElementById('input3').value="";
+
+                alert(resposta[1]);
+            }
+        }
+        ajax.send(JSON.stringify({
+            "codAeroporto": formdata.get('codAeroporto'),
+            "tituloLink": formdata.get('tituloLink'),
+            "descricaoLink": formdata.get('descricaoLink'),
+            "link": formdata.get('link')
+        })
+        );
+    }
+
+
+
+
+
+</script>
+
+</html>
